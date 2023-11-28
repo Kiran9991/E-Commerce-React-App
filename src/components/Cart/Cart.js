@@ -31,9 +31,9 @@ const Cart = () => {
   return (
       <Modal.Body className="grid-example">
         <div className={cart.row+' '+cart.header}>
-          <span className={cart.item+' '+cart.column}>ITEM</span>
-          <span className={cart.price+' '+cart.column}>PRICE</span>
-          <span className={cart.quantity+' '+cart.column}>QUANTITY</span>
+          <span className={`${cart.item} ${cart.column}`}>ITEM</span>
+          <span className={`${cart.price} ${cart.column}`}>PRICE</span>
+          <span className={`${cart.quantity} ${cart.column}`}>QUANTITY</span>
         </div>
         {cartElements.map((item, index) => (
           <CartItem item={item} index={index}/>
