@@ -1,10 +1,10 @@
 import { Nav, Button } from "react-bootstrap";
 
-const HeaderCartButton = () => {
+const HeaderCartButton = (props) => {
   return (
     <Nav>
       <Nav.Link>
-        <Button variant="light">Cart 0 </Button>
+        <Button variant="light" onClick={props.onClick}>Cart 0 </Button>
       </Nav.Link>
     </Nav>
   );

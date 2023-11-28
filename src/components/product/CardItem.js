@@ -11,7 +11,7 @@ const CardItem = (props) => {
         <Card.Text>
           <h5>${props.product.price}</h5>
         </Card.Text>
-        <Button variant="primary">Add to Cart</Button>
+        <Button variant="primary">ADD TO CART</Button>
       </Card.Body>
     </Card>
   );
