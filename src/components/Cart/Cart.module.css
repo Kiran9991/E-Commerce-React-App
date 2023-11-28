@@ -52,18 +52,6 @@ img {
   margin-right: 20px;
 }
 
-.quantity button {
-  color: white;
-  font-weight: bold;
-  background: rgb(231, 76, 76);
-  cursor: pointer;
-  border: none;
-  border-radius: 8%;
-  height: 30px;
-  outline: none;
-  padding: 0px 7px;
-}
-
 .price {
   width: 20%;
 }
@@ -80,14 +68,10 @@ img {
   font-size: 1.5rem;
 }
 
-.quantity button {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
+.addButton {
+  margin-right: 8px;
 }
 
-.quantity button:hover {
-  background-color: #c82333;
+.removeButton {
+  margin-left: 8px;
 }

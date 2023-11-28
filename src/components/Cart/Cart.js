@@ -1,6 +1,6 @@
 import { Modal } from "react-bootstrap";
 
-import classes from './Cart.module.css';
+import cart from './Cart.module.css';
 import CartItem from "./CartItem";
 
 const Cart = () => {
@@ -30,17 +30,17 @@ const Cart = () => {
 
   return (
       <Modal.Body className="grid-example">
-        <div className={classes.row+' '+classes.header}>
-          <span className={classes.item+' '+classes.column}>ITEM</span>
-          <span className={classes.price+' '+classes.column}>PRICE</span>
-          <span className={classes.quantity+' '+classes.column}>QUANTITY</span>
+        <div className={cart.row+' '+cart.header}>
+          <span className={cart.item+' '+cart.column}>ITEM</span>
+          <span className={cart.price+' '+cart.column}>PRICE</span>
+          <span className={cart.quantity+' '+cart.column}>QUANTITY</span>
         </div>
         {cartElements.map((item, index) => (
           <CartItem item={item} index={index}/>
         ))}
-        <div className={classes.total}>
+        <div className={cart.total}>
           <span>
-            <span className={classes["total-title"]}>
+            <span className={cart["total-title"]}>
               <strong>Total</strong>
             </span>
             $ <span>39.00</span>
