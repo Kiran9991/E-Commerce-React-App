@@ -2,31 +2,37 @@ import { Modal } from "react-bootstrap";
 
 import cart from './Cart.module.css';
 import CartItem from "./CartItem";
+import { useContext } from "react";
+import CartContext from "../../store/cart-context";
+
+const showUniqueItems = (items) => {
+  const uniqueItems = [];
+  const track = new Map();
+
+  for (let i = 0; i < items.length; i++) {
+    if (track.has(items[i].title)) {
+      let idx = track.get(items[i].title);
+      uniqueItems[idx] = {
+        ...uniqueItems[idx],
+        quantity:
+          Number(uniqueItems[idx].quantity) + Number(items[i].quantity),
+      };
+    } else {
+      uniqueItems.push({ ...items[i] });
+      track.set(items[i].title, uniqueItems.length - 1);
+    }
+  }
+  return uniqueItems;
+}
 
 const Cart = () => {
-  const cartElements = [
-    {
-      title: "Colors",
-      price: 100,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-      quantity: 2,
-    },
-    {
-      title: "Black and white Colors",
-      price: 50,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-      quantity: 3,
-    },
-    {
-      title: "Yellow and Black Colors",
-      price: 70,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-      quantity: 1,
-    },
-  ];
+  const cartCtx = useContext(CartContext);
+
+  let total = 0;
+
+  cartCtx.items.forEach(item => total += item.price)
+
+  const uniqueItems = showUniqueItems(cartCtx.items);
 
   return (
       <Modal.Body className="grid-example">
@@ -35,7 +41,7 @@ const Cart = () => {
           <span className={`${cart.price} ${cart.column}`}>PRICE</span>
           <span className={`${cart.quantity} ${cart.column}`}>QUANTITY</span>
         </div>
-        {cartElements.map((item, index) => (
+        {uniqueItems.map((item, index) => (
           <CartItem item={item} index={index}/>
         ))}
         <div className={cart.total}>
@@ -43,7 +49,7 @@ const Cart = () => {
             <span className={cart["total-title"]}>
               <strong>Total</strong>
             </span>
-            $ <span>39.00</span>
+            $ <strong>{total}</strong>
           </span>
         </div>
       </Modal.Body>
