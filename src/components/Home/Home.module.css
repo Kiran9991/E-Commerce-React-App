@@ -1,0 +1,11 @@
+.container {
+  text-align: center;
+  margin: 50px;
+}
+
+.title {
+  color: #292626;
+  font-size: 2em;
+  margin-bottom: 20px;
+  font-weight: bold;
+}

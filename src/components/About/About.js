@@ -1,3 +1,5 @@
+import about from './About.module.css';
+
 const AboutUs = () => {
     const content = `Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
     sorrows, hates no prosecutors will unfold in the enduring of which were
@@ -19,13 +21,13 @@ const AboutUs = () => {
     often one of us, however, have any! Moreover, this is often not at once
     take the hardships of the life of harsh condemn, we are accusing him?
     Him whom something large cisterns.`
-  return (
-    <>
-      <h3>About Us</h3>
-      <p>
-        {content}
-      </p>
-    </>
+    return (
+      <div className={about.container}>
+          <h3 className={about.title}>About Us</h3>
+          <p className={about.content}>
+              {content}
+          </p>
+      </div>
   );
 };
 

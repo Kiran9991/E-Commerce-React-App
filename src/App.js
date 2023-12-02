@@ -32,9 +32,7 @@ function App() {
         {
           path: "/products",
           element: (
-            <CartProvider>
-              <Products />
-            </CartProvider>
+            <Products/>
           ),
         },
         { path: "/about", element: <AboutUs /> },

@@ -1,0 +1,17 @@
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: justify;
+}
+
+.title {
+    color: #333;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.content {
+    color: #666;
+    font-size: 1em;
+    line-height: 1.6;
+}

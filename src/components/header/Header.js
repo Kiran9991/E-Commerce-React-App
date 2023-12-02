@@ -12,9 +12,6 @@ const Header = (props) => {
       <Container>
         <Navbar.Brand>E - Commerce</Navbar.Brand>
         <Nav className="me-auto">
-          {/* <Nav.Link>Home</Nav.Link>
-          <Nav.Link>Store</Nav.Link>
-          <Nav.Link>About</Nav.Link> */}
           <Link to='/' className={header.navlink}>Home</Link>
           <Link to='/products' className={header.navlink}>Store</Link>
           <Link to='/about' className={header.navlink}>About</Link>
