@@ -1,28 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Header from './components/Header/Header';
-import Products from './components/Product/Products';
-import ModalCart from './components/UI/Modal';
-import CartProvider from './store/CartProvider';
+import Header from "./components/Header/Header";
+import Products from "./components/Product/Products";
+import ModalCart from "./components/UI/Modal";
+import CartProvider from "./store/CartProvider";
+import AboutUs from "./components/About/About";
+import Home from "./components/Home/Home";
 
 function App() {
   const [showCart, setShowCart] = useState(false);
 
   const onClose = () => {
     setShowCart(false);
-  }
+  };
 
   const show = () => {
     setShowCart(true);
-  }
+  };
 
-  return (
-    <CartProvider>
-      <ModalCart show={showCart} onHide={onClose}/>
-      <Header onClick={show}/>
-      <Products/>
-    </CartProvider>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <CartProvider>
+          <ModalCart show={showCart} onHide={onClose} />
+          <Header onClick={show} />
+        </CartProvider>
+      ),
+      children: [
+        {
+          path: "/products",
+          element: (
+            <CartProvider>
+              <Products />
+            </CartProvider>
+          ),
+        },
+        { path: "/about", element: <AboutUs /> },
+        { path: '/', element: <Home/> }
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

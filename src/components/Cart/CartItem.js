@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
+import { useContext } from "react";
 
 import cart from './Cart.module.css';
-import { useContext } from "react";
 import CartContext from "../../store/cart-context";
 
 const CartItem = (props) => {
@@ -13,7 +13,6 @@ const CartItem = (props) => {
   }
 
   const removeItemFromCartHandler = () => {
-    console.log(item.id)
     cartCtx.removeItem(item.id)
   }
 
