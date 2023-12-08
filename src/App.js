@@ -7,6 +7,7 @@ import ModalCart from "./components/UI/Modal";
 import CartProvider from "./store/CartProvider";
 import AboutUs from "./components/About/About";
 import Home from "./components/Home/Home";
+import ContactUs from "./components/ContactUs/ContactUs";
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -36,7 +37,8 @@ function App() {
           ),
         },
         { path: "/about", element: <AboutUs /> },
-        { path: '/', element: <Home/> }
+        { path: '/', element: <Home/> },
+        { path: '/contact-us', element: <ContactUs/>}
       ],
     },
   ]);
