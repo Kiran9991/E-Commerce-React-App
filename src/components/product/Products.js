@@ -6,6 +6,7 @@ import CardItem from "./CardItem";
 const Products = () => {
   const productsArr = [
     {
+      id: 'p1',
       title: "Colors",
       price: 100,
       imageUrl:
@@ -13,6 +14,7 @@ const Products = () => {
       quantity: 1
     },
     {
+      id: 'p2',
       title: "Black and white Colors",
       price: 50,
       imageUrl:
@@ -20,6 +22,7 @@ const Products = () => {
       quantity: 1
     },
     {
+      id: 'p3',
       title: "Yellow and Black Colors",
       price: 70,
       imageUrl:
@@ -27,6 +30,7 @@ const Products = () => {
       quantity: 1
     },
     {
+      id: 'p4',
       title: "Blue Color",
       price: 100,
       imageUrl:
