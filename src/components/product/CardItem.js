@@ -12,7 +12,11 @@ const CardItem = (props) => {
     cartCtx.addItem({ id: product.id+Math.random(), ...product });
   };
 
-  console.log('product',product)
+  const isProductInCart = cartCtx.items.some((item) => item.id === product.id);
+
+  const handleClick = () => {
+    if(!isProductInCart) alert(`The Item which you selected is not available in your cart`);
+  }
 
   return (
     <Card className="shadow-lg mb-4">
@@ -20,7 +24,7 @@ const CardItem = (props) => {
         <Card.Title>
           <h5>{product.title}</h5>
         </Card.Title>
-        <Link to={`/products/${product.id}`}>
+        <Link to={isProductInCart ? `/products/${product.id}`: `#`} onClick={handleClick}>
           <Card.Img src={product.imageUrl} />
         </Link>
         <Card.Text>
