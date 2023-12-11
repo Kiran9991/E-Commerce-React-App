@@ -4,19 +4,17 @@ import { useContext } from "react";
 import CartContext from "../../../store/cart-context";
 
 const ProductDetails = () => {
-    const params = useParams();
-    const itemCtx = useContext(CartContext);
+  const params = useParams();
+  const itemCtx = useContext(CartContext);
 
-  const singleProduct = itemCtx.items.find((item) => (
-    item.id === params.productId
-  ))
+  const singleProduct = itemCtx.items.find(
+    (item) => item.id === params.productId
+  );
 
   const submitHandler = () => {
     itemCtx.addItem({ id: Math.random(), ...singleProduct });
   };
 
-  console.log(singleProduct)
-  
   return (
     <div className="ap">
       <div className="details">
@@ -34,8 +32,10 @@ const ProductDetails = () => {
           <p>content</p>
 
           <div className="thumb"></div>
-          <button className="cart" onClick={submitHandler}>Add to cart</button>
-          <Link to='/products'>
+          <button className="cart" onClick={submitHandler}>
+            Add to cart
+          </button>
+          <Link to="/products">
             <button className="back">Back to Products page</button>
           </Link>
         </div>

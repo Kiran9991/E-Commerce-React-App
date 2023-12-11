@@ -9,20 +9,22 @@ const CardItem = (props) => {
   const { product } = props;
 
   const submitHandler = () => {
-    cartCtx.addItem({ id: Math.random(), ...product });
+    cartCtx.addItem({ id: product.id+Math.random(), ...product });
   };
+
+  console.log('product',product)
 
   return (
     <Card className="shadow-lg mb-4">
       <Card.Body>
         <Card.Title>
-          <h5>{props.product.title}</h5>
+          <h5>{product.title}</h5>
         </Card.Title>
-        <Link to={`/products/${props.product.id}`}>
-          <Card.Img src={props.product.imageUrl} />
+        <Link to={`/products/${product.id}`}>
+          <Card.Img src={product.imageUrl} />
         </Link>
         <Card.Text>
-          <h5>${props.product.price}</h5>
+          <h5>${product.price}</h5>
         </Card.Text>
         <Button variant="primary" onClick={submitHandler}>
           ADD TO CART

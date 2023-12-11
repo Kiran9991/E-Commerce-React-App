@@ -6,42 +6,42 @@ import CardItem from "./CardItem";
 const Products = () => {
   const productsArr = [
     {
-      id: 'p1',
+      id: '1',
       title: "Colors",
       price: 100,
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-      quantity: 1
+      quantity: 1,
     },
     {
-      id: 'p2',
+      id: '2',
       title: "Black and white Colors",
       price: 50,
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-      quantity: 1
+      quantity: 1,
     },
     {
-      id: 'p3',
+      id: '3',
       title: "Yellow and Black Colors",
       price: 70,
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-      quantity: 1
+      quantity: 1,
     },
     {
-      id: 'p4',
+      id: '4',
       title: "Blue Color",
       price: 100,
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
-      quantity: 1
+      quantity: 1,
     },
   ];
 
   return (
     <>
-      <h2 className={classes["centered-container"]}>Music</h2>
+      <h2 className={classes.container}>Music</h2>
       <Container className="mt-3">
         <Row xs={1} md={4}>
           {productsArr.map((product, index) => (
