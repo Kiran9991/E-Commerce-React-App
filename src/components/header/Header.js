@@ -23,6 +23,9 @@ const Header = (props) => {
           <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/contact-us">
             Contact Us
           </NavLink>
+          <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/login">
+            Login
+          </NavLink>
         </Nav>
         <HeaderCartButton onClick={props.onClick} />
       </Container>

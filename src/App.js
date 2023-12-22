@@ -4,11 +4,12 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Products from "./components/Product/Products";
 import ModalCart from "./components/UI/Modal";
-import CartProvider from "./store/CartProvider";
+import { CartContextProvider } from "./store/cart-context";
 import AboutUs from "./components/About/About";
 import Home from "./components/Home/Home";
 import ContactUs from "./components/ContactUs/ContactUs";
 import ProductDetails from "./components/Product/ProductDetails/ProductDetails";
+import Login from "./components/Login/Login";
 
 function App() {
   const [showCart, setShowCart] = useState(false);
@@ -22,7 +23,7 @@ function App() {
   };
 
   return (
-    <CartProvider>
+    <CartContextProvider>
       <ModalCart show={showCart} onHide={onClose} />
       <Header onClick={show} />
       <main>
@@ -42,12 +43,15 @@ function App() {
           <Route path="/contact-us">
             <ContactUs />
           </Route>
+          <Route path='/login'>
+            <Login/>
+          </Route>
           <Route path="/products/:productId" exact>
             <ProductDetails/>
           </Route>
         </Switch>
       </main>
-    </CartProvider>
+    </CartContextProvider>
   );
 }
 
