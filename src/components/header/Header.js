@@ -1,11 +1,21 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import HeaderCartButton from "./HeaderCartButton";
 import header from "./Header.module.css";
+import AuthContext from "../../store/auth-context";
 
 const Header = (props) => {
+  const history = useHistory();
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
+
+  const logoutHandler = () => {
+    authCtx.logout();
+    history.replace('/login')
+  }
+
   return (
     <Navbar expand="sm" bg="dark" variant="dark">
       <Container>
@@ -14,20 +24,21 @@ const Header = (props) => {
           <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/home">
             Home
           </NavLink>
-          <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/products">
+          {isLoggedIn && <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/products">
             Store
-          </NavLink>
+          </NavLink>}
           <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/about">
             About
           </NavLink>
           <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/contact-us">
             Contact Us
           </NavLink>
-          <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/login">
+          {!isLoggedIn && <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/login">
             Login
-          </NavLink>
+          </NavLink>}
         </Nav>
-        <HeaderCartButton onClick={props.onClick} />
+        {isLoggedIn && <HeaderCartButton onClick={props.onClick} />}
+        {isLoggedIn && <Button variant="secondary" type="button" onClick={logoutHandler}>Logout</Button>}
       </Container>
     </Navbar>
   );
