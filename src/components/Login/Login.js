@@ -12,7 +12,7 @@ const Login = () => {
 
   const submitFormHandler = async (e) => {
     e.preventDefault();
-
+    setIsLoading(true);
     try {
       const res = await fetch(
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC8IykqejjI79ePKYsCrYciX6Vs8G6nySI`,
@@ -63,14 +63,7 @@ const Login = () => {
         </div>
         <div className={classes.actions}>
           {!isLoading && <button type="submit">Login</button>}
-          {isLoading && <p>Sending request....</p>}
-          {/* <button
-            type="button"
-            className={classes.toggle}
-            onClick={switchAuthModeHandler}
-          >
-            {isLogin ? "Create new account" : "Login with existing account"}
-          </button> */}
+          {isLoading && <p>Logging....</p>}
         </div>
       </form>
     </section>
