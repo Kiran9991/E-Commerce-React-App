@@ -44,6 +44,8 @@
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
+  color: black;
+  font-weight: bold;
 }
 
 .actions button {

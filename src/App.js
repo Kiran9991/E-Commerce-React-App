@@ -18,7 +18,7 @@ function App() {
     setTimeout(() => {
       localStorage.removeItem("token");
       console.log("logout");
-    }, 10000);
+    }, 1800000);
   }
 
   return (

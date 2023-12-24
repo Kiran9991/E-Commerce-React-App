@@ -36,6 +36,7 @@ const Login = () => {
       }
 
       alert(`Successfully logged in ${data.email}`);
+      localStorage.setItem('email',data.email);
       authCtx.login(data.idToken);
 
       enteredEmail.current.value = "";

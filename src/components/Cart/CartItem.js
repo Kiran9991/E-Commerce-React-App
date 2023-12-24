@@ -17,7 +17,7 @@ const CartItem = (props) => {
   }
 
   return (
-    <div className={cart.row} key={item.id}>
+    <div className={cart.row}>
       <span className={`${cart.item} ${cart.column}`}>
         <img className={cart.img} src={item.imageUrl} alt="img" />
         <span>{item.title}</span>

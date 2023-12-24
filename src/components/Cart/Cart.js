@@ -43,7 +43,7 @@ const Cart = () => {
         <span className={`${cart.quantity} ${cart.column}`}>QUANTITY</span>
       </div>
       {uniqueItems.map((item, index) => (
-        <CartItem item={item} index={index}/>
+        <CartItem key={item.id} item={item} index={index}/>
       ))}
       <div className={cart.total}>
         <span>
