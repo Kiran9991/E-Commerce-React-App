@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const CartContext = React.createContext({
   items: [],
@@ -9,29 +9,36 @@ const CartContext = React.createContext({
 const convertEmail = (email) => {
   let newEmail = "";
   for (let i = 0; i < email.length; i++) {
-    if (email[i] !== "@" && email[i] !== ".") email += email[i];
+    if (email[i] !== "@" && email[i] !== ".") newEmail += email[i];
   }
   return newEmail;
 };
 
-export const CartContextProvider = async (props) => {
-  const userEmail = localStorage.getItem("email");
-  let email = convertEmail(userEmail);
-  // try {
-  //   const res = await fetch(`https://crudcrud.com/api/652d8df35708449ebeddef9d61ba6374/cart${email}`);
-  //   const data = await res.json();
-  //   console.log('data',data);
-  // }catch(err) {
-  //   console.log(err);
-  // }
+const CartContextProvider = (props) => {
   const [items, updateItem] = useState([]);
 
-  const addItemToCartHandler = async (item) => {
-    updateItem([...items, item]);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const userEmail = localStorage.getItem("email");
+        const email = convertEmail(userEmail);
+        const res = await fetch(`https://crudcrud.com/api/32f20937178b4267b3f5901c9cb7c8e5/cart${email}`);
+        const data = await res.json();
+        
+        updateItem([...data]);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchData();
+  }, []);
 
+  const addItemToCartHandler = async (item) => {
+    const userEmail = localStorage.getItem("email");
+    const email = convertEmail(userEmail);
     try {
       const res = await fetch(
-        `https://crudcrud.com/api/652d8df35708449ebeddef9d61ba6374/cart${email}`,
+        `https://crudcrud.com/api/32f20937178b4267b3f5901c9cb7c8e5/cart${email}`,
         {
           method: "POST",
           headers: {
@@ -41,17 +48,32 @@ export const CartContextProvider = async (props) => {
         }
       );
       const data = await res.json();
-      console.log('data',data);
+      updateItem([...items, data]);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const removeItemFromCartHandler = (id) => {
+  const removeItemFromCartHandler = async(id) => {
     updateItem((prev) => {
-      const updatedPrevItems = prev.filter((item) => item.id !== id);
+      const updatedPrevItems = prev.filter((item) => item._id !== id);
       return updatedPrevItems;
     });
+    try {
+      const userEmail = localStorage.getItem("email");
+      const email = convertEmail(userEmail);
+      await fetch(
+        `https://crudcrud.com/api/32f20937178b4267b3f5901c9cb7c8e5/cart${email}/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          }
+        }
+      );
+    } catch(err) {
+      console.log(err);
+    }
   };
 
   const cartContext = {
@@ -67,4 +89,4 @@ export const CartContextProvider = async (props) => {
   );
 };
 
-export default CartContext;
+export { CartContext as default, CartContextProvider };

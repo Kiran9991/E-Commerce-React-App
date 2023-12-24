@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import ModalCart from "../UI/Modal";
 import Header from "../Header/Header";
 
@@ -14,11 +14,11 @@ const Layout = (props) => {
   };
 
   return (
-    <>
+    <Fragment>
       <ModalCart show={showCart} onHide={onClose} />
       <Header onClick={show} />
       <main>{props.children}</main>
-    </>
+    </Fragment>
   );
 };
 

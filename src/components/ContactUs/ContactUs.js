@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, Fragment } from "react";
 import { Button } from "react-bootstrap";
 import classes from "./ContactUs.module.css";
 
@@ -11,29 +11,32 @@ const ContactUs = () => {
     e.preventDefault();
 
     const obj = {
-        name: enteredName.current.value,
-        email: enteredEmail.current.value,
-        phoneNo: enteredPhoneNumber.current.value
-    }
+      name: enteredName.current.value,
+      email: enteredEmail.current.value,
+      phoneNo: enteredPhoneNumber.current.value,
+    };
 
-    const response = await fetch('https://react-fetch-api-project-default-rtdb.firebaseio.com/contactus.json', {
-      method: 'POST',
-      body: JSON.stringify(obj),
-      headers: {
-        'Content-Type':'application/json'
+    const response = await fetch(
+      "https://react-fetch-api-project-default-rtdb.firebaseio.com/contactus.json",
+      {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    })
+    );
     const data = await response.json();
-    console.log('successfully posted',data);
-    alert(`Successfully form has been filled`)
+    console.log("successfully posted", data);
+    alert(`Successfully form has been filled`);
 
-    enteredName.current.value = '';
-    enteredEmail.current.value = '';
-    enteredPhoneNumber.current.value = '';
+    enteredName.current.value = "";
+    enteredEmail.current.value = "";
+    enteredPhoneNumber.current.value = "";
   };
 
   return (
-    <>
+    <Fragment>
       <h3 className={classes.title}>Contact Us</h3>
       <div className={classes.container}>
         <form className={classes.form}>
@@ -74,7 +77,7 @@ const ContactUs = () => {
           </div>
         </form>
       </div>
-    </>
+    </Fragment>
   );
 };
 

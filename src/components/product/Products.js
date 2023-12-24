@@ -2,11 +2,12 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import classes from "./Products.module.css";
 import CardItem from "./CardItem";
+import { Fragment } from "react";
 
 const Products = () => {
   const productsArr = [
     {
-      id: '1',
+      id: "1",
       title: "Colors",
       price: 100,
       imageUrl:
@@ -14,7 +15,7 @@ const Products = () => {
       quantity: 1,
     },
     {
-      id: '2',
+      id: "2",
       title: "Black and white Colors",
       price: 50,
       imageUrl:
@@ -22,7 +23,7 @@ const Products = () => {
       quantity: 1,
     },
     {
-      id: '3',
+      id: "3",
       title: "Yellow and Black Colors",
       price: 70,
       imageUrl:
@@ -30,7 +31,7 @@ const Products = () => {
       quantity: 1,
     },
     {
-      id: '4',
+      id: "4",
       title: "Blue Color",
       price: 100,
       imageUrl:
@@ -40,7 +41,7 @@ const Products = () => {
   ];
 
   return (
-    <>
+    <Fragment>
       <h2 className={classes.container}>Music</h2>
       <Container className="mt-3">
         <Row xs={1} md={4}>
@@ -51,7 +52,7 @@ const Products = () => {
           ))}
         </Row>
       </Container>
-    </>
+    </Fragment>
   );
 };
 

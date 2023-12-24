@@ -1,7 +1,8 @@
-import about from './About.module.css';
+import { Fragment } from "react";
+import about from "./About.module.css";
 
 const AboutUs = () => {
-    const content = `Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
+  const content = `Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
     sorrows, hates no prosecutors will unfold in the enduring of which were
     born in it? Often leads smallest mistake some pain main responsibilities
     are to stand for the right builder of pleasure, accepted explain up to
@@ -20,14 +21,14 @@ const AboutUs = () => {
     to that question is answered, which was selected for the fault, it is
     often one of us, however, have any! Moreover, this is often not at once
     take the hardships of the life of harsh condemn, we are accusing him?
-    Him whom something large cisterns.`
-    return (
+    Him whom something large cisterns.`;
+  return (
+    <Fragment>
       <div className={about.container}>
-          <h3 className={about.title}>About Us</h3>
-          <p className={about.content}>
-              {content}
-          </p>
+        <h3 className={about.title}>About Us</h3>
+        <p className={about.content}>{content}</p>
       </div>
+    </Fragment>
   );
 };
 

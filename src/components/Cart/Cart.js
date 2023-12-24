@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Modal } from "react-bootstrap";
 
 import cart from "./Cart.module.css";
@@ -33,27 +34,33 @@ const Cart = () => {
 
   const uniqueItems = showUniqueItems(cartCtx.items);
 
-  const content = <h2 className={cart.empty}>Your Cart is Empty!</h2>
+  const content = <h2 className={cart.empty}>Your Cart is Empty!</h2>;
 
   return (
-    uniqueItems.length > 0 ? <Modal.Body className="grid-example">
-      <div className={`${cart.row} ${cart.header}`}>
-        <span className={`${cart.item} ${cart.column}`}>ITEM</span>
-        <span className={`${cart.price} ${cart.column}`}>PRICE</span>
-        <span className={`${cart.quantity} ${cart.column}`}>QUANTITY</span>
-      </div>
-      {uniqueItems.map((item, index) => (
-        <CartItem key={item.id} item={item} index={index}/>
-      ))}
-      <div className={cart.total}>
-        <span>
-          <span className={cart["total-title"]}>
-            <strong>Total</strong>
-          </span>
-          $ <strong>{total}</strong>
-        </span>
-      </div>
-    </Modal.Body> : content
+    <Fragment>
+      {uniqueItems.length > 0 ? (
+        <Modal.Body className="grid-example">
+          <div className={`${cart.row} ${cart.header}`}>
+            <span className={`${cart.item} ${cart.column}`}>ITEM</span>
+            <span className={`${cart.price} ${cart.column}`}>PRICE</span>
+            <span className={`${cart.quantity} ${cart.column}`}>QUANTITY</span>
+          </div>
+          {uniqueItems.map((item, index) => (
+            <CartItem item={item} index={index} />
+          ))}
+          <div className={cart.total}>
+            <span>
+              <span className={cart["total-title"]}>
+                <strong>Total</strong>
+              </span>
+              $ <strong>{total}</strong>
+            </span>
+          </div>
+        </Modal.Body>
+      ) : (
+        content
+      )}
+    </Fragment>
   );
 };
 

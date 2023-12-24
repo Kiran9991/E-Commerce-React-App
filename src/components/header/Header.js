@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
@@ -13,34 +13,64 @@ const Header = (props) => {
 
   const logoutHandler = () => {
     authCtx.logout();
-    history.replace('/login')
-  }
+    history.replace("/login");
+  };
 
   return (
-    <Navbar expand="sm" bg="dark" variant="dark">
-      <Container>
-        <Navbar.Brand>E - Commerce</Navbar.Brand>
-        <Nav className="me-auto">
-          <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/home">
-            Home
-          </NavLink>
-          {isLoggedIn && <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/products">
-            Store
-          </NavLink>}
-          <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/about">
-            About
-          </NavLink>
-          <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/contact-us">
-            Contact Us
-          </NavLink>
-          {!isLoggedIn && <NavLink activeClassName={header.navLinks} className={header.navInactive} to="/login">
-            Login
-          </NavLink>}
-        </Nav>
-        {isLoggedIn && <HeaderCartButton onClick={props.onClick} />}
-        {isLoggedIn && <Button variant="secondary" type="button" onClick={logoutHandler}>Logout</Button>}
-      </Container>
-    </Navbar>
+    <Fragment>
+      <Navbar expand="sm" bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand>E - Commerce</Navbar.Brand>
+          <Nav className="me-auto">
+            <NavLink
+              activeClassName={header.navLinks}
+              className={header.navInactive}
+              to="/home"
+            >
+              Home
+            </NavLink>
+            {isLoggedIn && (
+              <NavLink
+                activeClassName={header.navLinks}
+                className={header.navInactive}
+                to="/products"
+              >
+                Store
+              </NavLink>
+            )}
+            <NavLink
+              activeClassName={header.navLinks}
+              className={header.navInactive}
+              to="/about"
+            >
+              About
+            </NavLink>
+            <NavLink
+              activeClassName={header.navLinks}
+              className={header.navInactive}
+              to="/contact-us"
+            >
+              Contact Us
+            </NavLink>
+            {!isLoggedIn && (
+              <NavLink
+                activeClassName={header.navLinks}
+                className={header.navInactive}
+                to="/login"
+              >
+                Login
+              </NavLink>
+            )}
+          </Nav>
+          {isLoggedIn && <HeaderCartButton onClick={props.onClick} />}
+          {isLoggedIn && (
+            <Button variant="secondary" type="button" onClick={logoutHandler}>
+              Logout
+            </Button>
+          )}
+        </Container>
+      </Navbar>
+    </Fragment>
   );
 };
 

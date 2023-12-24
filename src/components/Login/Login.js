@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState, Fragment } from "react";
 import classes from "./Login.module.css";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
@@ -36,13 +36,13 @@ const Login = () => {
       }
 
       alert(`Successfully logged in ${data.email}`);
-      localStorage.setItem('email',data.email);
+      localStorage.setItem("email", data.email);
       authCtx.login(data.idToken);
 
       enteredEmail.current.value = "";
       enteredPassword.current.value = "";
 
-      history.replace('/products')
+      history.replace("/products");
     } catch (err) {
       alert(err.message);
     }
@@ -51,23 +51,30 @@ const Login = () => {
   };
 
   return (
-    <section className={classes.auth}>
-      <h1>Login</h1>
-      <form onSubmit={submitFormHandler}>
-        <div className={classes.control}>
-          <label htmlFor="email">Your Email</label>
-          <input type="email" id="email" required ref={enteredEmail} />
-        </div>
-        <div className={classes.control}>
-          <label htmlFor="password">Your Password</label>
-          <input type="password" id="password" required ref={enteredPassword} />
-        </div>
-        <div className={classes.actions}>
-          {!isLoading && <button type="submit">Login</button>}
-          {isLoading && <p>Logging....</p>}
-        </div>
-      </form>
-    </section>
+    <Fragment>
+      <section className={classes.auth}>
+        <h1>Login</h1>
+        <form onSubmit={submitFormHandler}>
+          <div className={classes.control}>
+            <label htmlFor="email">Your Email</label>
+            <input type="email" id="email" required ref={enteredEmail} />
+          </div>
+          <div className={classes.control}>
+            <label htmlFor="password">Your Password</label>
+            <input
+              type="password"
+              id="password"
+              required
+              ref={enteredPassword}
+            />
+          </div>
+          <div className={classes.actions}>
+            {!isLoading && <button type="submit">Login</button>}
+            {isLoading && <p>Logging....</p>}
+          </div>
+        </form>
+      </section>
+    </Fragment>
   );
 };
 
