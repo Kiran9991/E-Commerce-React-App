@@ -10,7 +10,13 @@ const CartItem = (props) => {
   const cartCtx = useContext(CartContext);
 
   const addItemToCartHandler = () => {
-    cartCtx.addItem({ ...item, id: Math.random(), quantity: 1 });
+    cartCtx.addItem({
+      id: Math.random(),
+      title: item.title,
+      imageUrl: item.imageUrl,
+      price: item.price,
+      quantity: 1,
+    });
   };
 
   const removeItemFromCartHandler = () => {

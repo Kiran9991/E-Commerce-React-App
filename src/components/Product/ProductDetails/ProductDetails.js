@@ -13,7 +13,13 @@ const ProductDetails = () => {
   );
 
   const submitHandler = () => {
-    itemCtx.addItem({ id: Math.random(), ...singleProduct });
+    itemCtx.addItem({ 
+      id: Math.random(),
+      title: singleProduct.title,
+      imageUrl: singleProduct.imageUrl,
+      price: singleProduct.price,
+      quantity: 1,
+   });
   };
 
   return (
